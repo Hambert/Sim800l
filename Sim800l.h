@@ -17,9 +17,9 @@
  *       |  ARDUINO UNO >>>   SIM800L  |
  *        -----------------------------
  *            GND      >>>   GND
- *        RX  10       >>>   TX    
- *        TX  11       >>>   RX
- *       RESET 2       >>>   RST 
+ *        RX  2        >>>   TX    
+ *        TX  3        >>>   RX
+ *       RESET 4       >>>   RST 
  *                 
  *   POWER SOURCE 4.2V >>> VCC
  *
@@ -34,9 +34,9 @@
 #include "Arduino.h"
 
 
-#define RX_PIN 10
-#define TX_PIN 11	
-#define RESET_PIN 2   // pin to the reset pin sim800l
+#define RX_PIN 2
+#define TX_PIN 3
+#define RESET_PIN 4   // pin to the reset pin sim800l
 
 #define LED true // used for indicator led, in case that you don want set to false . 
 #define LED_PIN 13 //pin to indicate states. 
@@ -69,6 +69,8 @@ class Sim800l
 	bool delAllSms();     // return :  OK or ERROR .. 
 
 	void signalQuality();
+    	String getSignalQuality(); // return the signal quali
+	String getBatterieCharge(); // get the battery charge level
 	void setPhoneFunctionality();
 	void activateBearerProfile();
 	void deactivateBearerProfile();
