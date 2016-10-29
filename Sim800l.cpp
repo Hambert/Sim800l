@@ -203,12 +203,17 @@ bool Sim800l::hangoffCall(){
   else return false;
 }
 
+bool Sim800l::PowerOff(){
+  SIM.print (F("AT+CPOWD=1\r\n"));
+  _buffer=_readSerial();
+  if ( (_buffer.indexOf("NORMAL POWER DOWN") ) != -1) return true;
+  else return false;
+}
 
 
 
 
-
-bool Sim800l::sendSms(char* number,char* text){
+bool Sim800l::sendSms(const char* number,const char* text){
 
     SIM.print (F("AT+CMGF=1\r")); //set sms to text mode  
     _buffer=_readSerial();
